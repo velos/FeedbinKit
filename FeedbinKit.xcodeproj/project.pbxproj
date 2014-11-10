@@ -66,6 +66,7 @@
 		D27AC5A61A11653500B4141A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D27AC5A71A11653500B4141A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateTransform.swift; sourceTree = "<group>"; };
+		D27AC5AF1A116DED00B4141A /* FeedbinKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FeedbinKit.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +92,7 @@
 		D27AC55C1A11547A00B4141A = {
 			isa = PBXGroup;
 			children = (
+				D27AC5AF1A116DED00B4141A /* FeedbinKit.playground */,
 				D27AC5A61A11653500B4141A /* LICENSE */,
 				D27AC5A71A11653500B4141A /* README.md */,
 				D27AC5681A11547A00B4141A /* FeedbinKit */,
