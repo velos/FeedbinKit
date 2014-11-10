@@ -28,7 +28,7 @@ public class Subscription : MapperProtocol {
         object.createdAt        <= mapper["created_at"] // TODO: DateTransformer
         object.feedIdentifier   <= mapper["feed_id"]
         object.title            <= mapper["title"]
-        object.feedURL          <= (mapper["feed_url"], URLTransform<NSURL, String>)
-        object.siteURL          <= (mapper["site_url"], URLTransform<NSURL, String>)
+        object.feedURL          <= (mapper["feed_url"], URLTransform<NSURL, String>())
+        object.siteURL          <= (mapper["site_url"], URLTransform<NSURL, String>())
     }
 }

@@ -30,7 +30,7 @@ public class Entry: MapperProtocol {
         object.identifier       <= mapper["id"]
         object.feedIdentifier   <= mapper["feed_id"]
         object.title            <= mapper["title"]
-        object.URL              <= (mapper["url"], URLTransform<NSURL, String>)
+        object.URL              <= (mapper["url"], URLTransform<NSURL, String>())
         object.author           <= mapper["author"]
         object.content          <= mapper["content"]
         object.summary          <= mapper["summary"]
