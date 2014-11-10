@@ -34,7 +34,7 @@ public class Entry: MapperProtocol {
         object.author           <= mapper["author"]
         object.content          <= mapper["content"]
         object.summary          <= mapper["summary"]
-        object.published        <= mapper["published"] // TODO: DateTransformer
-        object.createdAt        <= mapper["created_at"] // TODO: DateTransformer
+        object.published        <= (mapper["published"], ISO8601DateTransform<NSDate, String>())
+        object.createdAt        <= (mapper["created_at"], ISO8601DateTransform<NSDate, String>())
     }
 }

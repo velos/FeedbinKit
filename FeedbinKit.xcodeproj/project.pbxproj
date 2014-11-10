@@ -17,6 +17,7 @@
 		D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59F1A11637E00B4141A /* Tagging.swift */; };
 		D27AC5A81A11653500B4141A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D27AC5A61A11653500B4141A /* LICENSE */; };
 		D27AC5A91A11653500B4141A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5A71A11653500B4141A /* README.md */; };
+		D27AC5AD1A1165EC00B4141A /* ISO8601DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		D27AC59F1A11637E00B4141A /* Tagging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tagging.swift; sourceTree = "<group>"; };
 		D27AC5A61A11653500B4141A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D27AC5A71A11653500B4141A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateTransform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,12 +164,21 @@
 		D27AC5911A11555D00B4141A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D27AC5AB1A1165CB00B4141A /* Transforms */,
 				D27AC59C1A11637E00B4141A /* Entry.swift */,
 				D27AC59D1A11637E00B4141A /* SavedSearch.swift */,
 				D27AC59E1A11637E00B4141A /* Subscription.swift */,
 				D27AC59F1A11637E00B4141A /* Tagging.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D27AC5AB1A1165CB00B4141A /* Transforms */ = {
+			isa = PBXGroup;
+			children = (
+				D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */,
+			);
+			path = Transforms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +316,7 @@
 				D27AC5A21A11637E00B4141A /* Subscription.swift in Sources */,
 				D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */,
 				D27AC5A91A11653500B4141A /* README.md in Sources */,
+				D27AC5AD1A1165EC00B4141A /* ISO8601DateTransform.swift in Sources */,
 				D27AC5A01A11637E00B4141A /* Entry.swift in Sources */,
 				D27AC5A11A11637E00B4141A /* SavedSearch.swift in Sources */,
 			);

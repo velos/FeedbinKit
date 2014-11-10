@@ -25,7 +25,7 @@ public class Subscription : MapperProtocol {
     // MARK: - MapperProtocol
     public class func map(mapper: Mapper, object: Subscription) {
         object.identifier       <= mapper["id"]
-        object.createdAt        <= mapper["created_at"] // TODO: DateTransformer
+        object.createdAt        <= (mapper["created_at"], ISO8601DateTransform<NSDate, String>())
         object.feedIdentifier   <= mapper["feed_id"]
         object.title            <= mapper["title"]
         object.feedURL          <= (mapper["feed_url"], URLTransform<NSURL, String>())
