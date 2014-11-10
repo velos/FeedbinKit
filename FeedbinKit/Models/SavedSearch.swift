@@ -15,8 +15,12 @@ public class SavedSearch : MapperProtocol {
     var name: String?
     var query: String?
 
+    public required init () {
+        // ...
+    }
+
     // MARK: - MapperProtocol
-    class func map(mapper: Mapper, object: Subscription) {
+    public class func map(mapper: Mapper, object: SavedSearch) {
         object.identifier   <= mapper["id"]
         object.name         <= mapper["name"]
         object.query        <= mapper["query"]

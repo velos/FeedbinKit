@@ -21,8 +21,12 @@ public class Entry: MapperProtocol {
     var published: NSDate?
     var createdAt: NSDate?
 
+    public required init () {
+        // ...
+    }
+
     // MARK: - MapperProtocol
-    class func map(mapper: Mapper, object: Subscription) {
+    public class func map(mapper: Mapper, object: Entry) {
         object.identifier       <= mapper["id"]
         object.feedIdentifier   <= mapper["feed_id"]
         object.title            <= mapper["title"]

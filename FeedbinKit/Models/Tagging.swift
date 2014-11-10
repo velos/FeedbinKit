@@ -15,8 +15,12 @@ public class Tagging : MapperProtocol {
     var feedIdentifier: Int?
     var name: String?
 
+    public required init () {
+        // ...
+    }
+
     // MARK: - MapperProtocol
-    class func map(mapper: Mapper, object: Subscription) {
+    public class func map(mapper: Mapper, object: Tagging) {
         object.identifier       <= mapper["id"]
         object.feedIdentifier   <= mapper["feed_id"]
         object.name             <= mapper["name"]

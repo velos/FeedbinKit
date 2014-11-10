@@ -18,8 +18,12 @@ public class Subscription : MapperProtocol {
     var feedURL: NSURL?
     var siteURL: NSURL?
 
+    public required init () {
+        // ...
+    }
+
     // MARK: - MapperProtocol
-    class func map(mapper: Mapper, object: Subscription) {
+    public class func map(mapper: Mapper, object: Subscription) {
         object.identifier       <= mapper["id"]
         object.createdAt        <= mapper["created_at"] // TODO: DateTransformer
         object.feedIdentifier   <= mapper["feed_id"]
