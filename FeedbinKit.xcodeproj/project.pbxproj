@@ -10,6 +10,11 @@
 		D27AC56C1A11547A00B4141A /* FeedbinKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D27AC56B1A11547A00B4141A /* FeedbinKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D27AC5721A11547A00B4141A /* FeedbinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27AC5661A11547A00B4141A /* FeedbinKit.framework */; };
 		D27AC5791A11547A00B4141A /* FeedbinKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5781A11547A00B4141A /* FeedbinKitTests.swift */; };
+		D27AC58F1A11554100B4141A /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27AC58A1A11551000B4141A /* ObjectMapper.framework */; };
+		D27AC5A01A11637E00B4141A /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59C1A11637E00B4141A /* Entry.swift */; };
+		D27AC5A11A11637E00B4141A /* SavedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59D1A11637E00B4141A /* SavedSearch.swift */; };
+		D27AC5A21A11637E00B4141A /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59E1A11637E00B4141A /* Subscription.swift */; };
+		D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59F1A11637E00B4141A /* Tagging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,6 +25,27 @@
 			remoteGlobalIDString = D27AC5651A11547A00B4141A;
 			remoteInfo = FeedbinKit;
 		};
+		D27AC5891A11551000B4141A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D27AC5841A11551000B4141A /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6AAC8F7619F03C2900E7A677;
+			remoteInfo = ObjectMapper;
+		};
+		D27AC58B1A11551000B4141A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D27AC5841A11551000B4141A /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6AAC8F8119F03C2900E7A677;
+			remoteInfo = ObjectMapperTests;
+		};
+		D27AC58D1A11551700B4141A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D27AC5841A11551000B4141A /* ObjectMapper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AAC8F7519F03C2900E7A677;
+			remoteInfo = ObjectMapper;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +55,11 @@
 		D27AC5711A11547A00B4141A /* FeedbinKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedbinKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27AC5771A11547A00B4141A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27AC5781A11547A00B4141A /* FeedbinKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbinKitTests.swift; sourceTree = "<group>"; };
+		D27AC5841A11551000B4141A /* ObjectMapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectMapper.xcodeproj; path = Vendor/ObjectMapper/ObjectMapper.xcodeproj; sourceTree = SOURCE_ROOT; };
+		D27AC59C1A11637E00B4141A /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		D27AC59D1A11637E00B4141A /* SavedSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearch.swift; sourceTree = "<group>"; };
+		D27AC59E1A11637E00B4141A /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		D27AC59F1A11637E00B4141A /* Tagging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tagging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27AC58F1A11554100B4141A /* ObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,8 +103,10 @@
 		D27AC5681A11547A00B4141A /* FeedbinKit */ = {
 			isa = PBXGroup;
 			children = (
-				D27AC56B1A11547A00B4141A /* FeedbinKit.h */,
+				D27AC5911A11555D00B4141A /* Models */,
 				D27AC5691A11547A00B4141A /* Supporting Files */,
+				D27AC5901A11554F00B4141A /* Vendor */,
+				D27AC56B1A11547A00B4141A /* FeedbinKit.h */,
 			);
 			path = FeedbinKit;
 			sourceTree = "<group>";
@@ -102,6 +136,34 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D27AC5851A11551000B4141A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D27AC58A1A11551000B4141A /* ObjectMapper.framework */,
+				D27AC58C1A11551000B4141A /* ObjectMapperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D27AC5901A11554F00B4141A /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				D27AC5841A11551000B4141A /* ObjectMapper.xcodeproj */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		D27AC5911A11555D00B4141A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D27AC59C1A11637E00B4141A /* Entry.swift */,
+				D27AC59D1A11637E00B4141A /* SavedSearch.swift */,
+				D27AC59E1A11637E00B4141A /* Subscription.swift */,
+				D27AC59F1A11637E00B4141A /* Tagging.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -128,6 +190,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D27AC58E1A11551700B4141A /* PBXTargetDependency */,
 			);
 			name = FeedbinKit;
 			productName = FeedbinKit;
@@ -179,6 +242,12 @@
 			mainGroup = D27AC55C1A11547A00B4141A;
 			productRefGroup = D27AC5671A11547A00B4141A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D27AC5851A11551000B4141A /* Products */;
+					ProjectRef = D27AC5841A11551000B4141A /* ObjectMapper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D27AC5651A11547A00B4141A /* FeedbinKit */,
@@ -186,6 +255,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D27AC58A1A11551000B4141A /* ObjectMapper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectMapper.framework;
+			remoteRef = D27AC5891A11551000B4141A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D27AC58C1A11551000B4141A /* ObjectMapperTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ObjectMapperTests.xctest;
+			remoteRef = D27AC58B1A11551000B4141A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D27AC5641A11547A00B4141A /* Resources */ = {
@@ -209,6 +295,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27AC5A21A11637E00B4141A /* Subscription.swift in Sources */,
+				D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */,
+				D27AC5A01A11637E00B4141A /* Entry.swift in Sources */,
+				D27AC5A11A11637E00B4141A /* SavedSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +317,11 @@
 			isa = PBXTargetDependency;
 			target = D27AC5651A11547A00B4141A /* FeedbinKit */;
 			targetProxy = D27AC5731A11547A00B4141A /* PBXContainerItemProxy */;
+		};
+		D27AC58E1A11551700B4141A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjectMapper;
+			targetProxy = D27AC58D1A11551700B4141A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -319,6 +414,7 @@
 		D27AC57D1A11547A00B4141A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -328,12 +424,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		D27AC57E1A11547A00B4141A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
