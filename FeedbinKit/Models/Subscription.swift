@@ -11,12 +11,12 @@ import ObjectMapper
 
 
 public class Subscription : MapperProtocol {
-    var identifier: Int?
-    var createdAt: NSDate?
-    var feedIdentifier: Int?
-    var title: String?
-    var feedURL: NSURL?
-    var siteURL: NSURL?
+    public var identifier: Int?
+    public var createdAt: NSDate?
+    public var feedIdentifier: Int?
+    public var title: String?
+    public var feedURL: NSURL?
+    public var siteURL: NSURL?
 
     public required init () {
         // ...

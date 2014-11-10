@@ -11,9 +11,9 @@ import ObjectMapper
 
 
 public class SavedSearch : MapperProtocol {
-    var identifier: Int?
-    var name: String?
-    var query: String?
+    public var identifier: Int?
+    public var name: String?
+    public var query: String?
 
     public required init () {
         // ...

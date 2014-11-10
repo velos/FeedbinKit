@@ -11,15 +11,15 @@ import ObjectMapper
 
 
 public class Entry: MapperProtocol {
-    var identifier: Int?
-    var feedIdentifier: Int?
-    var title: String?
-    var URL: NSURL?
-    var author: String?
-    var content: String?
-    var summary: String?
-    var published: NSDate?
-    var createdAt: NSDate?
+    public var identifier: Int?
+    public var feedIdentifier: Int?
+    public var title: String?
+    public var URL: NSURL?
+    public var author: String?
+    public var content: String?
+    public var summary: String?
+    public var published: NSDate?
+    public var createdAt: NSDate?
 
     public required init () {
         // ...

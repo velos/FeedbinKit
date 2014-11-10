@@ -11,9 +11,9 @@ import ObjectMapper
 
 
 public class Tagging : MapperProtocol {
-    var identifier: Int?
-    var feedIdentifier: Int?
-    var name: String?
+    public var identifier: Int?
+    public var feedIdentifier: Int?
+    public var name: String?
 
     public required init () {
         // ...
