@@ -15,6 +15,8 @@
 		D27AC5A11A11637E00B4141A /* SavedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59D1A11637E00B4141A /* SavedSearch.swift */; };
 		D27AC5A21A11637E00B4141A /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59E1A11637E00B4141A /* Subscription.swift */; };
 		D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59F1A11637E00B4141A /* Tagging.swift */; };
+		D27AC5A81A11653500B4141A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D27AC5A61A11653500B4141A /* LICENSE */; };
+		D27AC5A91A11653500B4141A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5A71A11653500B4141A /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		D27AC59D1A11637E00B4141A /* SavedSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearch.swift; sourceTree = "<group>"; };
 		D27AC59E1A11637E00B4141A /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		D27AC59F1A11637E00B4141A /* Tagging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tagging.swift; sourceTree = "<group>"; };
+		D27AC5A61A11653500B4141A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		D27AC5A71A11653500B4141A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 		D27AC55C1A11547A00B4141A = {
 			isa = PBXGroup;
 			children = (
+				D27AC5A61A11653500B4141A /* LICENSE */,
+				D27AC5A71A11653500B4141A /* README.md */,
 				D27AC5681A11547A00B4141A /* FeedbinKit */,
 				D27AC5751A11547A00B4141A /* FeedbinKitTests */,
 				D27AC5671A11547A00B4141A /* Products */,
@@ -278,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27AC5A81A11653500B4141A /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +304,7 @@
 			files = (
 				D27AC5A21A11637E00B4141A /* Subscription.swift in Sources */,
 				D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */,
+				D27AC5A91A11653500B4141A /* README.md in Sources */,
 				D27AC5A01A11637E00B4141A /* Entry.swift in Sources */,
 				D27AC5A11A11637E00B4141A /* SavedSearch.swift in Sources */,
 			);
@@ -493,6 +501,7 @@
 				D27AC57E1A11547A00B4141A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D27AC57F1A11547A00B4141A /* Build configuration list for PBXNativeTarget "FeedbinKitTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +510,7 @@
 				D27AC5811A11547A00B4141A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
