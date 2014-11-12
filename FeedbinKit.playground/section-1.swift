@@ -1,11 +1,9 @@
 // Playground - noun: a place where people can play
 
 import UIKit
-import FeedbinKit
-import Alamofire
-import ObjectMapper
-
 import XCPlayground
+import FeedbinKit
+import ObjectMapper
 
 XCPSetExecutionShouldContinueIndefinitely(continueIndefinitely: true)
 
@@ -26,14 +24,8 @@ if let searches = searches {
 }
 
 
-checkCredentials("", "") { (valid: Bool, error: NSError?) in
-    if valid {
-        println("authenticated!")
-    } else {
-        if let error = error {
-            println("authentication failed - \(error)")
-        } else {
-            println("authentication failed - unknown error")
-        }
-    }
+checkCredentials("", "").onSuccess {
+    println("authenticated!")
+}.onFailure { error in
+    println("authentication failed - \(error)")
 }

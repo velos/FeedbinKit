@@ -18,6 +18,7 @@
 		D27AC5A81A11653500B4141A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D27AC5A61A11653500B4141A /* LICENSE */; };
 		D27AC5A91A11653500B4141A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5A71A11653500B4141A /* README.md */; };
 		D27AC5AD1A1165EC00B4141A /* ISO8601DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */; };
+		D2BA395C1A141423003838DD /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BA39561A141412003838DD /* BrightFutures.framework */; };
 		D2CED4011A13ED3E00879E07 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CED3FB1A13ED3500879E07 /* Alamofire.framework */; };
 		D2DBE3DD1A13F3A600639983 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DBE3DC1A13F3A600639983 /* Authentication.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6AAC8F7519F03C2900E7A677;
 			remoteInfo = ObjectMapper;
+		};
+		D2BA39551A141412003838DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2BA394F1A141412003838DD /* BrightFutures.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E9DF0815194470060083F7F2;
+			remoteInfo = BrightFutures;
+		};
+		D2BA39571A141412003838DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2BA394F1A141412003838DD /* BrightFutures.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E9DF0820194470060083F7F2;
+			remoteInfo = BrightFuturesTests;
+		};
+		D2BA395A1A14141B003838DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2BA394F1A141412003838DD /* BrightFutures.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E9DF0814194470060083F7F2;
+			remoteInfo = BrightFutures;
 		};
 		D2CED3FA1A13ED3500879E07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -90,6 +112,7 @@
 		D27AC5A71A11653500B4141A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateTransform.swift; sourceTree = "<group>"; };
 		D27AC5AF1A116DED00B4141A /* FeedbinKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FeedbinKit.playground; sourceTree = "<group>"; };
+		D2BA394F1A141412003838DD /* BrightFutures.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BrightFutures.xcodeproj; path = Vendor/BrightFutures/BrightFutures.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D2CED3F51A13ED3500879E07 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Vendor/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D2DBE3DC1A13F3A600639983 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2CED4011A13ED3E00879E07 /* Alamofire.framework in Frameworks */,
+				D2BA395C1A141423003838DD /* BrightFutures.framework in Frameworks */,
 				D27AC58F1A11554100B4141A /* ObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				D2CED3F51A13ED3500879E07 /* Alamofire.xcodeproj */,
+				D2BA394F1A141412003838DD /* BrightFutures.xcodeproj */,
 				D27AC5841A11551000B4141A /* ObjectMapper.xcodeproj */,
 			);
 			name = Vendor;
@@ -209,6 +234,15 @@
 				D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */,
 			);
 			path = Transforms;
+			sourceTree = "<group>";
+		};
+		D2BA39501A141412003838DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2BA39561A141412003838DD /* BrightFutures.framework */,
+				D2BA39581A141412003838DD /* BrightFuturesTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D2CED3F61A13ED3500879E07 /* Products */ = {
@@ -247,6 +281,7 @@
 			);
 			dependencies = (
 				D2CED4001A13ED3A00879E07 /* PBXTargetDependency */,
+				D2BA395B1A14141B003838DD /* PBXTargetDependency */,
 				D27AC58E1A11551700B4141A /* PBXTargetDependency */,
 			);
 			name = FeedbinKit;
@@ -305,6 +340,10 @@
 					ProjectRef = D2CED3F51A13ED3500879E07 /* Alamofire.xcodeproj */;
 				},
 				{
+					ProductGroup = D2BA39501A141412003838DD /* Products */;
+					ProjectRef = D2BA394F1A141412003838DD /* BrightFutures.xcodeproj */;
+				},
+				{
 					ProductGroup = D27AC5851A11551000B4141A /* Products */;
 					ProjectRef = D27AC5841A11551000B4141A /* ObjectMapper.xcodeproj */;
 				},
@@ -330,6 +369,20 @@
 			fileType = wrapper.cfbundle;
 			path = ObjectMapperTests.xctest;
 			remoteRef = D27AC58B1A11551000B4141A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D2BA39561A141412003838DD /* BrightFutures.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BrightFutures.framework;
+			remoteRef = D2BA39551A141412003838DD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D2BA39581A141412003838DD /* BrightFuturesTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BrightFuturesTests.xctest;
+			remoteRef = D2BA39571A141412003838DD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D2CED3FB1A13ED3500879E07 /* Alamofire.framework */ = {
@@ -401,6 +454,11 @@
 			isa = PBXTargetDependency;
 			name = ObjectMapper;
 			targetProxy = D27AC58D1A11551700B4141A /* PBXContainerItemProxy */;
+		};
+		D2BA395B1A14141B003838DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BrightFutures;
+			targetProxy = D2BA395A1A14141B003838DD /* PBXContainerItemProxy */;
 		};
 		D2CED4001A13ED3A00879E07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

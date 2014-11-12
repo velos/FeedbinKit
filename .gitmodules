@@ -4,3 +4,6 @@
 [submodule "Vendor/Alamofire"]
 	path = Vendor/Alamofire
 	url = https://github.com/Alamofire/Alamofire.git
+[submodule "Vendor/BrightFutures"]
+	path = Vendor/BrightFutures
+	url = https://github.com/Thomvis/BrightFutures.git
