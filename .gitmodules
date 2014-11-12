@@ -1,3 +1,6 @@
 [submodule "Vendor/ObjectMapper"]
 	path = Vendor/ObjectMapper
 	url = https://github.com/Hearst-DD/ObjectMapper.git
+[submodule "Vendor/Alamofire"]
+	path = Vendor/Alamofire
+	url = https://github.com/Alamofire/Alamofire.git

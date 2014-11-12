@@ -2,7 +2,12 @@
 
 import UIKit
 import FeedbinKit
+import Alamofire
 import ObjectMapper
+
+import XCPlayground
+
+XCPSetExecutionShouldContinueIndefinitely(continueIndefinitely: true)
 
 
 let savedSearchesJSON = "[{\"id\": 1, \"name\": \"JavaScript\", \"query\": \"javascript is:unread\" }]"
@@ -18,4 +23,17 @@ if let searches = searches {
         }
     }
     print("\n\n")
+}
+
+
+checkCredentials("", "") { (valid: Bool, error: NSError?) in
+    if valid {
+        println("authenticated!")
+    } else {
+        if let error = error {
+            println("authentication failed - \(error)")
+        } else {
+            println("authentication failed - unknown error")
+        }
+    }
 }
