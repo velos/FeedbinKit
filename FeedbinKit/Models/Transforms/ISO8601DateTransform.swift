@@ -19,14 +19,14 @@ public class ISO8601DateTransform<ObjectType, JSONType>: MapperTransform<ObjectT
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
     }
 
-    func transformFromJSON(value: AnyObject?) -> ObjectType? {
+    public override func transformFromJSON(value: AnyObject?) -> ObjectType? {
         if let dateString = value as? String {
             return (dateFormatter.dateFromString(dateString) as ObjectType)
         }
         return nil
     }
 
-    func transformToJSON(value: ObjectType?) -> JSONType? {
+    public override func transformToJSON(value: ObjectType?) -> JSONType? {
         if let date = value as? NSDate {
             return (dateFormatter.stringFromDate(date) as JSONType)
         }

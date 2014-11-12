@@ -5,10 +5,13 @@ import FeedbinKit
 import ObjectMapper
 
 
-let saved_searches_json = "{\"id\": 1, \"name\": \"JavaScript\", \"query\": \"javascript is:unread\" }"
+let savedSearchesJSON = "[{\"id\": 1, \"name\": \"JavaScript\", \"query\": \"javascript is:unread\" }]"
 
-let s: SavedSearch = Mapper().map(saved_searches_json, to: SavedSearch.self)
-
-s.identifier
-s.query
-s.name
+let searches: [SavedSearch] = Mapper().map(savedSearchesJSON, to: SavedSearch.self)
+for search in searches {
+    if let name = search.name {
+        println(name)
+    } else {
+        println("Unnamed")
+    }
+}
