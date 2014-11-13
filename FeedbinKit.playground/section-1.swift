@@ -24,8 +24,13 @@ if let searches = searches {
 }
 
 
-checkCredentials("", "").onSuccess {
-    println("authenticated!")
+let username = ""
+let password = ""
+
+checkCredentials(username, password).flatMap { _ in
+    getSubscriptions(username, password)
+}.onSuccess { subscriptions in
+    println("got subscriptions: \(subscriptions)")
 }.onFailure { error in
-    println("authentication failed - \(error)")
+    println("authentication failed")
 }

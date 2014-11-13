@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 
-public class Subscription : MapperProtocol {
+public class Subscription : MapperProtocol, Printable {
     public var identifier: Int?
     public var createdAt: NSDate?
     public var feedIdentifier: Int?
@@ -20,6 +20,10 @@ public class Subscription : MapperProtocol {
 
     public required init () {
         // ...
+    }
+
+    public var description : String {
+        return "<FeedbinKit.Subscription id: \(identifier), createdAt: \(createdAt), title: \(title)>"
     }
 
     // MARK: - MapperProtocol
