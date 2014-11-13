@@ -14,9 +14,9 @@ import BrightFutures
 public typealias AuthCompletionHandler = (valid: Bool, error: NSError?) -> ()
 
 
-public func checkCredentials(username: String, password: String) -> Future<Void> {
+public func checkCredential(credential: NSURLCredential) -> Future<Void> {
     let promise = Promise<Void>()
-    Alamofire.request(.GET, "https://api.feedbin.com/v2/authentication.json").authenticate(user: username, password: password).responseString { (request, response, responseString, error) in
+    Alamofire.request(.GET, "https://api.feedbin.com/v2/authentication.json").authenticate(usingCredential: credential).responseString { (request, response, responseString, error) in
         if let response = response {
             switch response.statusCode {
             case 200...299:

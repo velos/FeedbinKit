@@ -24,11 +24,10 @@ if let searches = searches {
 }
 
 
-let username = ""
-let password = ""
+let credential = NSURLCredential(user: "", password: "", persistence: .ForSession)
 
-checkCredentials(username, password).flatMap { _ in
-    getSubscriptions(username, password)
+checkCredential(credential).flatMap { _ in
+    getSubscriptions(credential.user, credential.password)
 }.onSuccess { subscriptions in
     println("got subscriptions: \(subscriptions)")
 }.onFailure { error in
