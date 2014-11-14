@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D26FA1041A153A19008C6FCC /* SubscriptionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */; };
+		D26FA1061A153A2B008C6FCC /* FeedbinClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */; };
 		D27AC56C1A11547A00B4141A /* FeedbinKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D27AC56B1A11547A00B4141A /* FeedbinKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D27AC5721A11547A00B4141A /* FeedbinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27AC5661A11547A00B4141A /* FeedbinKit.framework */; };
 		D27AC5791A11547A00B4141A /* FeedbinKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5781A11547A00B4141A /* FeedbinKitTests.swift */; };
@@ -16,12 +18,9 @@
 		D27AC5A21A11637E00B4141A /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59E1A11637E00B4141A /* Subscription.swift */; };
 		D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC59F1A11637E00B4141A /* Tagging.swift */; };
 		D27AC5A81A11653500B4141A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D27AC5A61A11653500B4141A /* LICENSE */; };
-		D27AC5A91A11653500B4141A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5A71A11653500B4141A /* README.md */; };
 		D27AC5AD1A1165EC00B4141A /* ISO8601DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */; };
-		D2A2576A1A1419AF009D9BE9 /* SubscriptionOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A257691A1419AF009D9BE9 /* SubscriptionOperations.swift */; };
 		D2BA395C1A141423003838DD /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BA39561A141412003838DD /* BrightFutures.framework */; };
 		D2CED4011A13ED3E00879E07 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CED3FB1A13ED3500879E07 /* Alamofire.framework */; };
-		D2DBE3DD1A13F3A600639983 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DBE3DC1A13F3A600639983 /* Authentication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +97,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionClient.swift; sourceTree = "<group>"; };
+		D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbinClient.swift; sourceTree = "<group>"; };
 		D27AC5661A11547A00B4141A /* FeedbinKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeedbinKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27AC56A1A11547A00B4141A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27AC56B1A11547A00B4141A /* FeedbinKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbinKit.h; sourceTree = "<group>"; };
@@ -113,10 +114,8 @@
 		D27AC5A71A11653500B4141A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D27AC5AC1A1165EC00B4141A /* ISO8601DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateTransform.swift; sourceTree = "<group>"; };
 		D27AC5AF1A116DED00B4141A /* FeedbinKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FeedbinKit.playground; sourceTree = "<group>"; };
-		D2A257691A1419AF009D9BE9 /* SubscriptionOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionOperations.swift; sourceTree = "<group>"; };
 		D2BA394F1A141412003838DD /* BrightFutures.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BrightFutures.xcodeproj; path = Vendor/BrightFutures/BrightFutures.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D2CED3F51A13ED3500879E07 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Vendor/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
-		D2DBE3DC1A13F3A600639983 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +140,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D26FA0FD1A153A05008C6FCC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */,
+				D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		D27AC55C1A11547A00B4141A = {
 			isa = PBXGroup;
 			children = (
@@ -165,12 +173,11 @@
 		D27AC5681A11547A00B4141A /* FeedbinKit */ = {
 			isa = PBXGroup;
 			children = (
+				D26FA0FD1A153A05008C6FCC /* Networking */,
 				D27AC5911A11555D00B4141A /* Models */,
 				D27AC5691A11547A00B4141A /* Supporting Files */,
 				D27AC5901A11554F00B4141A /* Vendor */,
 				D27AC56B1A11547A00B4141A /* FeedbinKit.h */,
-				D2DBE3DC1A13F3A600639983 /* Authentication.swift */,
-				D2A257691A1419AF009D9BE9 /* SubscriptionOperations.swift */,
 			);
 			path = FeedbinKit;
 			sourceTree = "<group>";
@@ -427,11 +434,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2A2576A1A1419AF009D9BE9 /* SubscriptionOperations.swift in Sources */,
-				D2DBE3DD1A13F3A600639983 /* Authentication.swift in Sources */,
+				D26FA1061A153A2B008C6FCC /* FeedbinClient.swift in Sources */,
+				D26FA1041A153A19008C6FCC /* SubscriptionClient.swift in Sources */,
 				D27AC5A21A11637E00B4141A /* Subscription.swift in Sources */,
 				D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */,
-				D27AC5A91A11653500B4141A /* README.md in Sources */,
 				D27AC5AD1A1165EC00B4141A /* ISO8601DateTransform.swift in Sources */,
 				D27AC5A01A11637E00B4141A /* Entry.swift in Sources */,
 				D27AC5A11A11637E00B4141A /* SavedSearch.swift in Sources */,

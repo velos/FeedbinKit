@@ -24,10 +24,12 @@ if let searches = searches {
 }
 
 
-let credential = NSURLCredential(user: "", password: "", persistence: .ForSession)
+let username = ""
+let password = ""
 
-checkCredential(credential).flatMap { _ in
-    getSubscriptions(credential.user, credential.password)
+let client = FeedbinClient()
+client.authenticate(username, password: password).flatMap { _ in
+    client.readAllSubscriptions()
 }.onSuccess { subscriptions in
     println("got subscriptions: \(subscriptions)")
 }.onFailure { error in
