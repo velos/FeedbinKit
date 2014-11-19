@@ -64,7 +64,13 @@ public enum SubscriptionRouter: URLRequestConvertible {
         let mutableURLRequest = NSMutableURLRequest(URL: URL!.URLByAppendingPathComponent(path))
         mutableURLRequest.HTTPMethod = method.rawValue
 
-        // add headers and stuff here
+        switch self {
+        case Update(let subscription):
+            let JSONString = Mapper().toJSONString(subscription, prettyPrint: false)
+            mutableURLRequest.HTTPBody = JSONString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        default:
+            break
+        }
 
         return mutableURLRequest
     }
