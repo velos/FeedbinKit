@@ -73,54 +73,16 @@ public enum SubscriptionRouter: URLRequestConvertible {
 
 public extension FeedbinClient {
     public func readAllSubscriptions() -> Future<[Subscription]> {
-        let promise = Promise<[Subscription]>()
-
-        if credential == nil {
-            promise.error(NSError())
-            return promise.future
+        return request(SubscriptionRouter.ReadAll()) { request, response, responseString in
+            return Mapper().map(responseString, to: Subscription.self)
         }
-
-        self.request(SubscriptionRouter.ReadAll()).authenticate(usingCredential: self.credential!).responseString { (_, _, responseString, error) -> Void in
-            if let responseString = responseString {
-                if let subscriptions: [Subscription] = Mapper().map(responseString, to: Subscription.self) {
-                    promise.success(subscriptions)
-                    return
-                }
-            }
-
-            if let error = error {
-                promise.error(error)
-            } else {
-                promise.error(NSError())
-            }
-        }
-        return promise.future
     }
 
 
     public func readAllSubscriptionsSince(sinceDate: NSDate) -> Future<[Subscription]> {
-        let promise = Promise<[Subscription]>()
-
-        if credential == nil {
-            promise.error(NSError())
-            return promise.future
+        return request(SubscriptionRouter.ReadAllSince(sinceDate: sinceDate)) { request, response, responseString in
+            return Mapper().map(responseString, to: Subscription.self)
         }
-
-        self.request(SubscriptionRouter.ReadAllSince(sinceDate: sinceDate)).authenticate(usingCredential: self.credential!).responseString { (_, _, responseString, error) -> Void in
-            if let responseString = responseString {
-                if let subscriptions: [Subscription] = Mapper().map(responseString, to: Subscription.self) {
-                    promise.success(subscriptions)
-                    return
-                }
-            }
-
-            if let error = error {
-                promise.error(error)
-            } else {
-                promise.error(NSError())
-            }
-        }
-        return promise.future
     }
 
 
@@ -128,95 +90,50 @@ public extension FeedbinClient {
 
 
     public func createSubscription(feedURL: NSURL) -> Future<([Subscription]?, NSURL?)> {
-        let promise = Promise<([Subscription]?, NSURL?)>()
+        return request(SubscriptionRouter.Create(feedURL)) { request, response, responseString in
 
-        if credential == nil {
-            promise.error(NSError())
-            return promise.future
-        }
+            if response == nil {
+                return (nil, nil)
+            }
 
-        self.request(SubscriptionRouter.Create(feedURL)).authenticate(usingCredential: self.credential!).responseString { (_, response, responseString, error) -> Void in
-
-            if let response = response {
-                switch response.statusCode {
-                case 201, 302:
-                    // 201 Created, 302 Found
-                    // TODO: this should provide a Subscription object instead
-                    if let subscriptionURLString = response.allHeaderFields["Location"] as? NSString {
-                        let subscriptionURL: NSURL? = NSURL(string: subscriptionURLString)
-                        promise.success(nil, subscriptionURL)
-                        return
-                    }
-                case 300:
-                    if let responseString = responseString {
-                        promise.success(Mapper().map(responseString, to: Subscription.self), nil)
-                        return
-                    }
-                default:
-                    // assume anything else is failure
-                    break
+            switch response!.statusCode {
+            case 201, 302:
+                // 201 Created, 302 Found
+                // TODO: this should provide a Subscription object instead
+                if let subscriptionURLString = response!.allHeaderFields["Location"] as? NSString {
+                    let subscriptionURL: NSURL? = NSURL(string: subscriptionURLString)
+                    return (nil, subscriptionURL)
                 }
+            case 300:
+                let subscriptions: [Subscription]? = Mapper().map(responseString, to: Subscription.self)
+                return (subscriptions, nil)
+            default:
+                // assume anything else is failure
+                return (nil, nil)
             }
 
-            if let error = error {
-                promise.error(error)
-            } else {
-                promise.error(NSError())
-            }
+            return (nil, nil)
         }
-        return promise.future
     }
 
 
     public func updateSubscription(subscription: Subscription) -> Future<Subscription> {
-        let promise = Promise<Subscription>()
-
-        if credential == nil {
-            promise.error(NSError())
-            return promise.future
+        return request(SubscriptionRouter.Update(subscription)) { request, response, responseString in
+            return Mapper().map(responseString, to: Subscription.self)
         }
-
-        self.request(SubscriptionRouter.Update(subscription)).authenticate(usingCredential: self.credential!).responseString { (_, _, responseString, error) -> Void in
-
-            if let responseString = responseString {
-                if let subscription: Subscription = Mapper().map(responseString, to: Subscription.self) {
-                    promise.success(subscription)
-                    return
-                }
-            }
-
-            if let error = error {
-                promise.error(error)
-            } else {
-                promise.error(NSError())
-            }
-        }
-        return promise.future
     }
 
 
     public func deleteSubscription(subscription: Subscription) -> Future<Void> {
-        let promise = Promise<Void>()
-
-        if credential == nil {
-            promise.error(NSError())
-            return promise.future
-        }
-
-        self.request(SubscriptionRouter.Delete(subscription)).authenticate(usingCredential: self.credential!).responseString { (_, response, _, error) -> Void in
-
+        return self.request(SubscriptionRouter.Delete(subscription)) { request, response, responseString in
             if response?.statusCode == 200 {
-                promise.success()
-                return
-            }
-
-            if let error = error {
-                promise.error(error)
+                // think of this as returning [NSNull null] instead of nil.
+                // yes, that's extraordinarily silly. typesafety!
+                return Void()
             } else {
-                promise.error(NSError())
+                return nil
             }
         }
-        return promise.future
     }
 }
 
