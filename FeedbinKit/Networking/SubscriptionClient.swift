@@ -92,7 +92,11 @@ public extension FeedbinClient {
     }
 
 
-    // TODO: read individual subscription
+    public func readSubscription(subscription: Subscription) -> Future<Subscription> {
+        return request(SubscriptionRouter.Read(subscription)) { _, _, responseString in
+            return Mapper().map(responseString, to: subscription)
+        }
+    }
 
 
     public func createSubscription(feedURL: NSURL) -> Future<([Subscription]?, NSURL?)> {
