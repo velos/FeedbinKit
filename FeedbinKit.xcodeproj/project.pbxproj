@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2220A3E1A1D645A00673EBC /* TaggingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2220A3D1A1D645A00673EBC /* TaggingClient.swift */; };
 		D2461FE71A16C7CA004AF49A /* EntryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2461FE61A16C7CA004AF49A /* EntryClient.swift */; };
 		D26FA1041A153A19008C6FCC /* SubscriptionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */; };
 		D26FA1061A153A2B008C6FCC /* FeedbinClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */; };
@@ -99,6 +100,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2220A3D1A1D645A00673EBC /* TaggingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingClient.swift; sourceTree = "<group>"; };
 		D2461FE61A16C7CA004AF49A /* EntryClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryClient.swift; sourceTree = "<group>"; };
 		D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionClient.swift; sourceTree = "<group>"; };
 		D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbinClient.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */,
 				D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */,
 				D2777E0D1A1AD4830051DDAF /* SavedSearchClient.swift */,
+				D2220A3D1A1D645A00673EBC /* TaggingClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				D2461FE71A16C7CA004AF49A /* EntryClient.swift in Sources */,
 				D2777E0E1A1AD4830051DDAF /* SavedSearchClient.swift in Sources */,
 				D27AC5A01A11637E00B4141A /* Entry.swift in Sources */,
+				D2220A3E1A1D645A00673EBC /* TaggingClient.swift in Sources */,
 				D27AC5A11A11637E00B4141A /* SavedSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
