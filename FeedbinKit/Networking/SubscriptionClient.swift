@@ -13,7 +13,7 @@ import BrightFutures
 import ObjectMapper
 
 
-public enum SubscriptionRouter: URLRequestConvertible {
+enum SubscriptionRouter: URLRequestConvertible {
     static let baseURLString = "https://api.feedbin.com/v2/"
 
     case ReadAll()
@@ -59,7 +59,7 @@ public enum SubscriptionRouter: URLRequestConvertible {
 
     // MARK: URLRequestConvertible
 
-    public var URLRequest: NSURLRequest {
+    var URLRequest: NSURLRequest {
         let URL = NSURL(string: SubscriptionRouter.baseURLString)
         let mutableURLRequest = NSMutableURLRequest(URL: URL!.URLByAppendingPathComponent(path))
         mutableURLRequest.HTTPMethod = method.rawValue
