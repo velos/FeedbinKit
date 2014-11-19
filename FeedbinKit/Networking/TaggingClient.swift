@@ -69,32 +69,22 @@ enum TaggingRouter: URLRequestConvertible {
 
 public extension FeedbinClient {
     public func readAllTagginges() -> Future<[Tagging]> {
-        return request(TaggingRouter.ReadAll()) { request, response, responseString in
+        return request(TaggingRouter.ReadAll()) { _, _, responseString in
             return Mapper().map(responseString, to: Tagging.self)
         }
     }
 
 
-    // TODO: pagination
-    public func readTagging(search: Tagging) -> Future<[Entry]> {
-        return requestJSON(TaggingRouter.Read(search)) { request, response, responseJSON in
-            if let identifiers = responseJSON as? Array<Int> {
-                let entries = identifiers.map { (identifier: Int) -> Entry in
-                    var entry = Entry()
-                    entry.identifier = identifier
-                    return entry
-                }
-                return entries
-            }
-
-            return nil
+    public func readTagging(tag: Tagging) -> Future<Tagging> {
+        return request(TaggingRouter.Read(tag)) { _, _, responseString in
+            return Mapper().map(responseString, to: tag)
         }
     }
 
 
-    public func createTagging(search: Tagging) -> Future<NSURL?> {
-        return request(TaggingRouter.Create(search)) { request, response, responseString in
-            // TODO: return the actual saved search object
+    public func createTagging(tag: Tagging) -> Future<NSURL?> {
+        return request(TaggingRouter.Create(tag)) { _, response, _ in
+            // TODO: return the actual tagging object
             if let locationHeaderString = response?.allHeaderFields["Location"] as? String {
                 return NSURL(string: locationHeaderString)
             } else {
@@ -106,7 +96,7 @@ public extension FeedbinClient {
 
 
     public func deleteTagging(search: Tagging) -> Future<Void> {
-        return self.request(TaggingRouter.Delete(search)) { request, response, responseString in
+        return self.request(TaggingRouter.Delete(search)) { _, response, _ in
             if response?.statusCode == 200 {
                 // think of this as returning [NSNull null] instead of nil.
                 // yes, that's extraordinarily silly. typesafety!
