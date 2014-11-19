@@ -48,4 +48,51 @@ public class FeedbinClient: Alamofire.Manager {
         return promise.future
     }
 
+
+    internal func request<T>(URLRequest: URLRequestConvertible, responseHandler: (request: NSURLRequest, response: NSHTTPURLResponse?, responseString: String) -> T?) -> Future<T> {
+        let promise = Promise<T>()
+
+        if self.credential == nil {
+            promise.error(NSError())
+            return promise.future
+        }
+
+        let request = self.request(URLRequest).responseString { (request, response, responseString, error) -> Void in
+            if let responseString = responseString {
+                let value = responseHandler(request: request, response: response, responseString: responseString)
+                if let value = value {
+                    promise.success(value)
+                    return
+                }
+            }
+
+            promise.error(error ?? NSError())
+        }
+
+        return promise.future
+    }
+
+
+    internal func requestJSON<T>(URLRequest: URLRequestConvertible, responseHandler: (request: NSURLRequest, response: NSHTTPURLResponse?, responseObject: AnyObject) -> T?) -> Future<T> {
+        let promise = Promise<T>()
+
+        if self.credential == nil {
+            promise.error(NSError())
+            return promise.future
+        }
+
+        let request = self.request(URLRequest).responseJSON { (request, response, responseObject, error) -> Void in
+            if let responseObject: AnyObject = responseObject {
+                let value = responseHandler(request: request, response: response, responseObject: responseObject)
+                if let value = value {
+                    promise.success(value)
+                    return
+                }
+            }
+
+            promise.error(error ?? NSError())
+        }
+
+        return promise.future
+    }
 }

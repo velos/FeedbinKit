@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D26FA1041A153A19008C6FCC /* SubscriptionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */; };
 		D26FA1061A153A2B008C6FCC /* FeedbinClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */; };
+		D2777E0E1A1AD4830051DDAF /* SavedSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2777E0D1A1AD4830051DDAF /* SavedSearchClient.swift */; };
 		D27AC56C1A11547A00B4141A /* FeedbinKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D27AC56B1A11547A00B4141A /* FeedbinKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D27AC5721A11547A00B4141A /* FeedbinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27AC5661A11547A00B4141A /* FeedbinKit.framework */; };
 		D27AC5791A11547A00B4141A /* FeedbinKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AC5781A11547A00B4141A /* FeedbinKitTests.swift */; };
@@ -99,6 +100,7 @@
 /* Begin PBXFileReference section */
 		D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionClient.swift; sourceTree = "<group>"; };
 		D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbinClient.swift; sourceTree = "<group>"; };
+		D2777E0D1A1AD4830051DDAF /* SavedSearchClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchClient.swift; sourceTree = "<group>"; };
 		D27AC5661A11547A00B4141A /* FeedbinKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeedbinKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27AC56A1A11547A00B4141A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D27AC56B1A11547A00B4141A /* FeedbinKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbinKit.h; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				D26FA1051A153A2B008C6FCC /* FeedbinClient.swift */,
 				D26FA1021A153A19008C6FCC /* SubscriptionClient.swift */,
+				D2777E0D1A1AD4830051DDAF /* SavedSearchClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				D27AC5A21A11637E00B4141A /* Subscription.swift in Sources */,
 				D27AC5A31A11637E00B4141A /* Tagging.swift in Sources */,
 				D27AC5AD1A1165EC00B4141A /* ISO8601DateTransform.swift in Sources */,
+				D2777E0E1A1AD4830051DDAF /* SavedSearchClient.swift in Sources */,
 				D27AC5A01A11637E00B4141A /* Entry.swift in Sources */,
 				D27AC5A11A11637E00B4141A /* SavedSearch.swift in Sources */,
 			);
