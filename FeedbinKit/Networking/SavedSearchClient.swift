@@ -97,7 +97,6 @@ public extension FeedbinClient {
 
             return nil
         }
-
     }
 
 

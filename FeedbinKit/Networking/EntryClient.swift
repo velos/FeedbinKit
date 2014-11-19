@@ -28,6 +28,12 @@ public enum EntryRouter: URLRequestConvertible {
 
     case ReadAll(pagination: Pagination?, sinceDate: NSDate?, starred: Bool?, identifiers: [Int]?)
     case Read(entry: Entry)
+    case ReadStarred
+    case StarEntries(entries: [Entry])
+    case UnstarEntries(entries: [Entry])
+    case GetUnread
+    case MarkAsUnread(entries: [Entry])
+    case MarkAsRead(entries: [Entry])
 
     var method: Alamofire.Method {
         switch self {
@@ -35,6 +41,18 @@ public enum EntryRouter: URLRequestConvertible {
             return .GET
         case .Read:
             return .GET
+        case .ReadStarred:
+            return .GET
+        case .StarEntries:
+            return .POST
+        case .UnstarEntries:
+            return .DELETE
+        case .GetUnread:
+            return .GET
+        case .MarkAsUnread:
+            return .POST
+        case .MarkAsRead:
+            return .DELETE
         }
     }
 
@@ -60,26 +78,57 @@ public enum EntryRouter: URLRequestConvertible {
             if let identifiers = params.identifiers {
                 // equivalent Objective-C is -[NSArray componentsJoinedByString:].
                 // similarly to python, though, we call join on the separator string.
-                queryParameters["ids"] = ",".join(identifiers.map { id in
-                    return String(id)
-                })
+                queryParameters["ids"] = ",".join(identifiers.map { String($0) })
             }
 
             var path = "/entries.json"
             return path
         case .Read(let entry):
             return "/entries/\(entry).json"
+        case .ReadStarred, .StarEntries, .UnstarEntries:
+            return "/starred_entries.json"
+        case .GetUnread, .MarkAsUnread, .MarkAsRead:
+            return "/unread_entries.json"
         }
     }
 
     // MARK: URLRequestConvertible
+
+    private func attachJSONObjectToRequest(request: NSMutableURLRequest, JSONObject: AnyObject) {
+        var error = NSErrorPointer()
+        let JSONData = NSJSONSerialization.dataWithJSONObject(JSONObject, options: nil, error: error)
+        if let JSONData = JSONData {
+            request.HTTPBody = JSONData
+        } else {
+            NSLog("Unexpected error serializing JSON: \(error.memory)")
+        }
+    }
 
     public var URLRequest: NSURLRequest {
         let URL = NSURL(string: SubscriptionRouter.baseURLString)
         let mutableURLRequest = NSMutableURLRequest(URL: URL!.URLByAppendingPathComponent(path))
         mutableURLRequest.HTTPMethod = method.rawValue
 
-        // add headers and stuff here
+        switch self {
+        case .StarEntries(let params):
+            attachJSONObjectToRequest(mutableURLRequest, JSONObject: [
+                "starred_entries": params.entries.filter{ $0 != nil }.map{ $0.identifier! }
+            ])
+        case .UnstarEntries(let params):
+            attachJSONObjectToRequest(mutableURLRequest, JSONObject: [
+                "starred_entries": params.entries.filter{ $0 != nil }.map{ $0.identifier! }
+            ])
+        case .MarkAsUnread(let params):
+            attachJSONObjectToRequest(mutableURLRequest, JSONObject: [
+                "unread_entries": params.entries.filter{ $0 != nil }.map{ $0.identifier! }
+            ])
+        case .MarkAsRead(let params):
+            attachJSONObjectToRequest(mutableURLRequest, JSONObject: [
+                "unread_entries": params.entries.filter{ $0 != nil }.map{ $0.identifier! }
+            ])
+        default:
+            break
+        }
 
         return mutableURLRequest
     }
@@ -97,6 +146,92 @@ public extension FeedbinClient {
     public func readEntry(entry: Entry) -> Future<Entry> {
         return self.request(EntryRouter.Read(entry: entry)) { _, _, responseString in
             return Mapper().map(responseString, to: entry)
+        }
+    }
+
+
+    // MARK: Starred Entries
+    public func readStarredEntries() -> Future<[Entry]> {
+        return requestJSON(EntryRouter.ReadStarred) { request, response, responseJSON in
+            if let identifiers = responseJSON as? Array<Int> {
+                let entries = identifiers.map { (identifier: Int) -> Entry in
+                    var entry = Entry()
+                    entry.identifier = identifier
+                    return entry
+                }
+                return entries
+            }
+
+            return nil
+        }
+    }
+
+
+    public func starEntries(entries: [Entry]) -> Future<Void> {
+        return self.request(EntryRouter.StarEntries(entries: entries)) { request, response, responseString in
+            if response?.statusCode == 200 {
+                // think of this as returning [NSNull null] instead of nil.
+                // yes, that's extraordinarily silly. typesafety!
+                return Void()
+            } else {
+                return nil
+            }
+        }
+    }
+
+
+    public func unstarEntries(entries: [Entry]) -> Future<Void> {
+        return self.request(EntryRouter.UnstarEntries(entries: entries)) { request, response, responseString in
+            if response?.statusCode == 200 {
+                // think of this as returning [NSNull null] instead of nil.
+                // yes, that's extraordinarily silly. typesafety!
+                return Void()
+            } else {
+                return nil
+            }
+        }
+    }
+
+
+    // MARK: Unread entries
+    public func getUnreadEntries() -> Future<[Entry]> {
+        return requestJSON(EntryRouter.GetUnread) { request, response, responseJSON in
+            if let identifiers = responseJSON as? Array<Int> {
+                let entries = identifiers.map { (identifier: Int) -> Entry in
+                    var entry = Entry()
+                    entry.identifier = identifier
+                    return entry
+                }
+                return entries
+            }
+
+            return nil
+        }
+    }
+
+
+    public func markAsRead(entries: [Entry]) -> Future<Void> {
+        return self.request(EntryRouter.MarkAsRead(entries: entries)) { request, response, responseString in
+            if response?.statusCode == 200 {
+                // think of this as returning [NSNull null] instead of nil.
+                // yes, that's extraordinarily silly. typesafety!
+                return Void()
+            } else {
+                return nil
+            }
+        }
+    }
+
+
+    public func markAsUnread(entries: [Entry]) -> Future<Void> {
+        return self.request(EntryRouter.MarkAsUnread(entries: entries)) { request, response, responseString in
+            if response?.statusCode == 200 {
+                // think of this as returning [NSNull null] instead of nil.
+                // yes, that's extraordinarily silly. typesafety!
+                return Void()
+            } else {
+                return nil
+            }
         }
     }
 }
