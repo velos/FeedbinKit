@@ -12,6 +12,16 @@ import BrightFutures
 
 
 public class FeedbinClient: Alamofire.Manager {
+    public struct Pagination {
+        var page: Int
+        var itemsPerPage: Int
+
+        public init(page: Int, itemsPerPage: Int = 50) {
+            self.page = page
+            self.itemsPerPage = itemsPerPage
+        }
+    }
+
     let configuration: NSURLSessionConfiguration
     var credential: NSURLCredential?
 

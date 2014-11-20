@@ -13,20 +13,10 @@ import BrightFutures
 import ObjectMapper
 
 
-public enum EntryRouter: URLRequestConvertible {
+enum EntryRouter: URLRequestConvertible {
     static let baseURLString = "https://api.feedbin.com/v2/"
 
-    public struct Pagination {
-        var page: Int
-        var entriesPerPage: Int
-
-        public init(page: Int, entriesPerPage: Int = 50) {
-            self.page = page
-            self.entriesPerPage = entriesPerPage
-        }
-    }
-
-    case ReadAll(pagination: Pagination?, sinceDate: NSDate?, starred: Bool?, identifiers: [Int]?)
+    case ReadAll(pagination: FeedbinClient.Pagination?, sinceDate: NSDate?, starred: Bool?, identifiers: [Int]?)
     case Read(entry: Entry)
     case ReadStarred
     case StarEntries(entries: [Entry])
@@ -63,7 +53,7 @@ public enum EntryRouter: URLRequestConvertible {
 
             if let pagination = params.pagination {
                 queryParameters["page"] = String(pagination.page)
-                queryParameters["per_page"] = String(pagination.entriesPerPage)
+                queryParameters["per_page"] = String(pagination.itemsPerPage)
             }
 
             if let sinceDate = params.sinceDate {
@@ -93,8 +83,7 @@ public enum EntryRouter: URLRequestConvertible {
     }
 
     // MARK: URLRequestConvertible
-
-    private func attachJSONObjectToRequest(request: NSMutableURLRequest, JSONObject: AnyObject) {
+    func attachJSONObjectToRequest(request: NSMutableURLRequest, JSONObject: AnyObject) {
         var error = NSErrorPointer()
         let JSONData = NSJSONSerialization.dataWithJSONObject(JSONObject, options: nil, error: error)
         if let JSONData = JSONData {
@@ -104,7 +93,7 @@ public enum EntryRouter: URLRequestConvertible {
         }
     }
 
-    public var URLRequest: NSURLRequest {
+    var URLRequest: NSURLRequest {
         let URL = NSURL(string: SubscriptionRouter.baseURLString)
         let mutableURLRequest = NSMutableURLRequest(URL: URL!.URLByAppendingPathComponent(path))
         mutableURLRequest.HTTPMethod = method.rawValue
@@ -136,7 +125,7 @@ public enum EntryRouter: URLRequestConvertible {
 
 
 public extension FeedbinClient {
-    public func readAllEntries(pagination: EntryRouter.Pagination? = nil, sinceDate: NSDate? = nil, starred: Bool? = nil, identifiers: [Int]? = nil) -> Future<[Entry]> {
+    public func readAllEntries(pagination: Pagination? = nil, sinceDate: NSDate? = nil, starred: Bool? = nil, identifiers: [Int]? = nil) -> Future<[Entry]> {
         return self.request(EntryRouter.ReadAll(pagination: pagination, sinceDate: sinceDate, starred: starred, identifiers: identifiers)) { _, _, responseString in
             return Mapper().map(responseString, to: Entry.self)
         }
