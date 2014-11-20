@@ -77,7 +77,7 @@ enum SavedSearchRouter: URLRequestConvertible {
 
 public extension FeedbinClient {
     public func readAllSavedSearches() -> Future<[SavedSearch]> {
-        return request(SavedSearchRouter.ReadAll()) { request, response, responseString in
+        return request(SavedSearchRouter.ReadAll()) { _, _, responseString in
             return Mapper().map(responseString, to: SavedSearch.self)
         }
     }
@@ -85,7 +85,7 @@ public extension FeedbinClient {
 
     // TODO: pagination
     public func readSavedSearch(search: SavedSearch) -> Future<[Entry]> {
-        return requestJSON(SavedSearchRouter.Read(search)) { request, response, responseJSON in
+        return requestJSON(SavedSearchRouter.Read(search)) { _, _, responseJSON in
             if let identifiers = responseJSON as? Array<Int> {
                 let entries = identifiers.map { (identifier: Int) -> Entry in
                     var entry = Entry()
@@ -101,7 +101,7 @@ public extension FeedbinClient {
 
 
     public func createSavedSearch(search: SavedSearch) -> Future<NSURL?> {
-        return request(SavedSearchRouter.Create(search)) { request, response, responseString in
+        return request(SavedSearchRouter.Create(search)) { _, response, _ in
             // TODO: return the actual saved search object
             if let locationHeaderString = response?.allHeaderFields["Location"] as? String {
                 return NSURL(string: locationHeaderString)
@@ -113,14 +113,14 @@ public extension FeedbinClient {
 
 
     public func updateSavedSearch(search: SavedSearch) -> Future<SavedSearch> {
-        return request(SavedSearchRouter.Update(search)) { request, response, responseString in
+        return request(SavedSearchRouter.Update(search)) { _, _, responseString in
             return Mapper().map(responseString, to: SavedSearch.self)
         }
     }
 
 
     public func deleteSavedSearch(search: SavedSearch) -> Future<Void> {
-        return self.request(SavedSearchRouter.Delete(search)) { request, response, responseString in
+        return self.request(SavedSearchRouter.Delete(search)) { _, response, _ in
             if response?.statusCode == 200 {
                 // think of this as returning [NSNull null] instead of nil.
                 // yes, that's extraordinarily silly. typesafety!

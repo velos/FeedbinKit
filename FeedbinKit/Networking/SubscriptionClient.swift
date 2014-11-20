@@ -79,14 +79,14 @@ enum SubscriptionRouter: URLRequestConvertible {
 
 public extension FeedbinClient {
     public func readAllSubscriptions() -> Future<[Subscription]> {
-        return request(SubscriptionRouter.ReadAll()) { request, response, responseString in
+        return request(SubscriptionRouter.ReadAll()) { _, _, responseString in
             return Mapper().map(responseString, to: Subscription.self)
         }
     }
 
 
     public func readAllSubscriptionsSince(sinceDate: NSDate) -> Future<[Subscription]> {
-        return request(SubscriptionRouter.ReadAllSince(sinceDate: sinceDate)) { request, response, responseString in
+        return request(SubscriptionRouter.ReadAllSince(sinceDate: sinceDate)) { _, _, responseString in
             return Mapper().map(responseString, to: Subscription.self)
         }
     }
@@ -100,7 +100,7 @@ public extension FeedbinClient {
 
 
     public func createSubscription(feedURL: NSURL) -> Future<([Subscription]?, NSURL?)> {
-        return request(SubscriptionRouter.Create(feedURL)) { request, response, responseString in
+        return request(SubscriptionRouter.Create(feedURL)) { _, response, responseString in
 
             if response == nil {
                 return (nil, nil)
@@ -128,14 +128,14 @@ public extension FeedbinClient {
 
 
     public func updateSubscription(subscription: Subscription) -> Future<Subscription> {
-        return request(SubscriptionRouter.Update(subscription)) { request, response, responseString in
+        return request(SubscriptionRouter.Update(subscription)) { _, _, responseString in
             return Mapper().map(responseString, to: Subscription.self)
         }
     }
 
 
     public func deleteSubscription(subscription: Subscription) -> Future<Void> {
-        return self.request(SubscriptionRouter.Delete(subscription)) { request, response, responseString in
+        return self.request(SubscriptionRouter.Delete(subscription)) { _, response, _ in
             if response?.statusCode == 200 {
                 // think of this as returning [NSNull null] instead of nil.
                 // yes, that's extraordinarily silly. typesafety!

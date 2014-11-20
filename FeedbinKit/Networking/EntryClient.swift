@@ -141,7 +141,7 @@ public extension FeedbinClient {
 
     // MARK: Starred Entries
     public func readStarredEntries() -> Future<[Entry]> {
-        return requestJSON(EntryRouter.ReadStarred) { request, response, responseJSON in
+        return requestJSON(EntryRouter.ReadStarred) { _, _, responseJSON in
             if let identifiers = responseJSON as? Array<Int> {
                 let entries = identifiers.map { (identifier: Int) -> Entry in
                     var entry = Entry()
@@ -157,7 +157,7 @@ public extension FeedbinClient {
 
 
     public func starEntries(entries: [Entry]) -> Future<Void> {
-        return self.request(EntryRouter.StarEntries(entries: entries)) { request, response, responseString in
+        return self.request(EntryRouter.StarEntries(entries: entries)) { _, response, _ in
             if response?.statusCode == 200 {
                 // think of this as returning [NSNull null] instead of nil.
                 // yes, that's extraordinarily silly. typesafety!
@@ -170,7 +170,7 @@ public extension FeedbinClient {
 
 
     public func unstarEntries(entries: [Entry]) -> Future<Void> {
-        return self.request(EntryRouter.UnstarEntries(entries: entries)) { request, response, responseString in
+        return self.request(EntryRouter.UnstarEntries(entries: entries)) { _, response, _ in
             if response?.statusCode == 200 {
                 // think of this as returning [NSNull null] instead of nil.
                 // yes, that's extraordinarily silly. typesafety!
@@ -184,7 +184,7 @@ public extension FeedbinClient {
 
     // MARK: Unread entries
     public func getUnreadEntries() -> Future<[Entry]> {
-        return requestJSON(EntryRouter.GetUnread) { request, response, responseJSON in
+        return requestJSON(EntryRouter.GetUnread) { _, _, responseJSON in
             if let identifiers = responseJSON as? Array<Int> {
                 let entries = identifiers.map { (identifier: Int) -> Entry in
                     var entry = Entry()
@@ -200,7 +200,7 @@ public extension FeedbinClient {
 
 
     public func markAsRead(entries: [Entry]) -> Future<Void> {
-        return self.request(EntryRouter.MarkAsRead(entries: entries)) { request, response, responseString in
+        return self.request(EntryRouter.MarkAsRead(entries: entries)) { _, response, _ in
             if response?.statusCode == 200 {
                 // think of this as returning [NSNull null] instead of nil.
                 // yes, that's extraordinarily silly. typesafety!
@@ -213,7 +213,7 @@ public extension FeedbinClient {
 
 
     public func markAsUnread(entries: [Entry]) -> Future<Void> {
-        return self.request(EntryRouter.MarkAsUnread(entries: entries)) { request, response, responseString in
+        return self.request(EntryRouter.MarkAsUnread(entries: entries)) { _, response, _ in
             if response?.statusCode == 200 {
                 // think of this as returning [NSNull null] instead of nil.
                 // yes, that's extraordinarily silly. typesafety!
